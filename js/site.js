@@ -2,13 +2,13 @@
 function getValues() {
     let loanAmount = document.getElementById("loanAmount").value;
 
-    let term = document.getElementById("payments").value
+    let term = document.getElementById("term").value
 
-    let interestRate = document.getElementById("interestRate").value;
+    let interestRate = document.getElementById("rate").value;
 
     let calculatedRate = calcRate(interestRate);
 
-    let payment = calcPayment(loanAmount, calculatedRate, term);
+    let payment = calcPayment(loanAmount, calculatedRate, term,);
 
     let totalPayments = calcPaymentSchedule(loanAmount, calculatedRate, term, payment);
 
@@ -16,12 +16,12 @@ function getValues() {
 }
 
 //calculate the interest rate
-function calcPayment() {
-    return (amount * rate) / (1 - Math.pow(1 + rate, -term));
+function calcRate(interestRate) {
+    return (loanAmount * rate) / (1 - Math.pow(1 + rate, -term));
 }
 
 //calculate the monthly payment
-function calcRate() {
+function calcPayment() {
     return (balance * rate);
 }
 
@@ -46,7 +46,7 @@ function calcPaymentSchedule() {
         //information contained in the object
         let loanPayment = {
             month: month,
-            payment: payment,
+            payments: payments,
             principal: monthlyPrincipal,
             totalInterest: totalInterest,
             balance: balance
@@ -71,7 +71,7 @@ function displayData(payments, loanAmount, payment) {
         payCols = payRow.querySelectorAll("td");
 
         //build the row
-        //we know that there are six columns in our template
+       
         paycols[0].textContent = payments[i].month;
         paycols[1].textContent = payments[i].payment.toFixed(2);
         paycols[2].textContent = payments[i].principal.toFixed(2);

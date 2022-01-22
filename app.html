@@ -62,30 +62,55 @@
                     <form>
                         <div class="mb-1">
                             <label for="loanAmount" class="form-label">Loan Amount:</label>
-                            <input type="number" class="form-control" id="loanAmount">
+                            <input type="number" class="form-control" id="loanAmount" value="15000">
                         </div>
                         <div class="mb-1">
-                            <label for="payments" class="form-label">Payments:</label>
-                            <input type="number" class="form-control" id="payments">
+                            <label for="term" class="form-label">Payments:</label>
+                            <input type="number" class="form-control" id="term" value="60">
                         </div>
                         <div class="mb-1">
                             <label for="interestRate" class="form-label">Rate:</label>
-                            <input type="number" class="form-control" id="rate">
+                            <input type="number" class="form-control" id="rate" value="3">
                         </div>
-                        <button type="submit" id="btnSubmit" class="btn btn-primary" style="float:right">Calculate</button>
+                        <button type="submit" id="btnSubmit" class="btn btn-primary"
+                            style="float:right">Calculate</button>
                     </form>
 
                 </div>
                 <div class="col">
-                    <!----MONTHLY PAYMENTS BOX HERE -->
-                    Payment Box Here
+                    <div id="paymentTitle">
+                        <p>Your Monthly Payments</p>
+                    </div>
+                    <p id="payment">
+
+                    </p>
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <label class="text-left">Total Principcal</label>
+                        </div>
+                        <div class="col text-right" id="totalPrincipal">
+
+                        </div>
+                        <div class="col text-left">
+                            <label>Total Interest</label><br>
+                        </div>
+                        <div class="col text-right" id="totalInterest">
+
+                        </div>
+                        <div class="col text-left">
+                            <label>Total Cost</label>
+                        </div>
+                        <div class="col text-right" id="totalCost">
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <table class="table table-hover table-striped" id="paymentData">
-                        <thead>
+                    <table class="table table-hover table-striped">
+                        <thead id="tableheader">
                             <tr>
                                 <th>Month</th>
                                 <th>Payment</th>
