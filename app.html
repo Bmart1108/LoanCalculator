@@ -25,11 +25,11 @@
 
 <body class="d-flex flex-column h-100">
 
-    <nav class="navbar navbar-expand-md fixed-top navbarBG navbar-dark">
+    <nav class="navbar navbar-expand-md fixed-top navbarBG navbar-dark fw-bold">
         <div class="container-fluid">
             <a class="navbar-brand" href="app.html">
 
-                <img src="img/MspectreMark.svg" height="24" class="d-inline-block align-text-top">
+                <img src="img/DICEWHITE1.png" height="30" class="d-inline-block align-text-top">
                 Loan Shark
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -62,17 +62,17 @@
                     <form>
                         <div class="mb-1">
                             <label for="loanAmount" class="form-label">Loan Amount:</label>
-                            <input type="number" class="form-control" id="loanAmount" value="15000">
+                            <input type="number" class="form-control" id="lamount" value="15000">
                         </div>
                         <div class="mb-1">
                             <label for="term" class="form-label">Payments:</label>
-                            <input type="number" class="form-control" id="term" value="60">
+                            <input type="number" class="form-control" id="lterm" value="60">
                         </div>
                         <div class="mb-1">
                             <label for="interestRate" class="form-label">Rate:</label>
-                            <input type="number" class="form-control" id="rate" value="3">
+                            <input type="number" class="form-control" id="lrate" value="3">
                         </div>
-                        <button type="submit" id="btnSubmit" class="btn btn-primary"
+                        <button type="button" id="btnSubmit" class="btn btn-primary"
                             style="float:right">Calculate</button>
                     </form>
 
@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col">
                     <table class="table table-hover table-striped">
-                        <thead id="tableheader">
+                        <thead id="tableheader" class="text-white">
                             <tr>
                                 <th>Month</th>
                                 <th>Payment</th>
@@ -120,7 +120,7 @@
                                 <th>Balance</th>
                             </tr>
                         </thead>
-                        <tBody id="paymentBody">
+                        <tBody id="scheduleBody">
                             <!----MONTHLY PAYMENT DATA GOES HERE-->
                         </tBody>
                     </table>
@@ -128,16 +128,16 @@
             </div>
         </div>
     </main>
-    <footer class="footer mt-auto py-3 sticky-footer">
+    <footer class="footer mt-auto py-2 sticky-footer">
         <div class="container-fluid">
             <div class="row row-cols-1 row-cols-lg-3 gy-2">
                 <div class="col order-last order-lg-first">
                     <div>
-                        <span class="text-muted">&copy;2022</span><span> Brandon Martin | bmart1108@gmail.com</span>
+                        <span class="fw-bold">&copy;2022</span><span class="fw-bold"> Brandon Martin | bmart1108@gmail.com</span>
                     </div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
-                    <img src="img/MarkSpectre_WhtLogo.svg" alt="mark spectre logo" height="24">
+                    <img src="img/LOGOBRANDONMARTIN-svg.svg" alt="mark spectre logo" height="45">
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
@@ -162,14 +162,14 @@
         </div>
     </footer>
 
-    <template id="paymentSchedule">
+    <template id="schedule-Template">
         <tr>
-            <td data-id="month"></td>
-            <td data-id="payment"></td>
-            <td data-id="principal"></td>
-            <td data-id="interest"></td>
-            <td data-id="totalInterest"></td>
-            <td data-id="balance"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
     </template>
 

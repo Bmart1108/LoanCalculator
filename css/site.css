@@ -14,7 +14,7 @@ main>.container {
 
 /*-----NAVBAR STYLES---*/
 .navbarBG {
-    background-color: var(--bm-dark-color);
+    background-color: purple
 }
 
 
@@ -57,9 +57,10 @@ main>.container {
 
 
 .btn-primary{
-    color: white !important;
-    background-color: var(--bm-secondary-color) !important;
+    color: black !important;
+    background-color: blueviolet !important;
     border-color: var(--bm-secondary-color);
+    font-weight: bold;
 }
 
 .btn-primary:hover,
@@ -67,14 +68,14 @@ main>.container {
 .btn-primary:visited,
 .btn-primary:focus{
     filter: brightness(1.1) !important;
-    border-color: var(--bm-secondary-color);
+    border-color: purple;
 }
 
 
 
 /*----FOOTER STYLES----*/
 .footer{
-    background-color: var(--bm-dark-color);
+    background-color:purple;
     padding-right: 1rem;
     color: var(--bm-light-color);
 
@@ -93,6 +94,6 @@ footer .social>a{
 }
 
 footer .social>a:hover{
-    color:var(--bm-secondary-color);
+    color: black;
     opacity: .90;
 }

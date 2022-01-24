@@ -1,117 +1,140 @@
-//get user inputs
+//calculate the payment for the loan
+function calcPayment(amount, rate, term) {
+    return (amount * rate) / (1 - Math.pow(1 + rate, -term));
+}
+//calculate the interest for the current balance of the loan
+function calcInterest(balance, rate) {
+    return balance * rate;
+
+}
+//convert rate to a monthly interest rate
+function calcRate(rate) {
+
+    return rate - rate / 1200
+}
+
+
 function getValues() {
-    let loanAmount = document.getElementById("loanAmount").value;
+    let loanAmount = document.getElementById("lamount").value;
+    //months inputted from the user
+    let loanTerm = document.getElementById("lterm").value;
+    let loanRate = document.getElementById("lrate").value;
 
-    let term = document.getElementById("term").value
+    loanAmount = Number(loanAmount);
+    loanTerm = parseInt(loanTerm);
+    loanRate = parseFloat(loanRate);
+    loanRate = calcRate(loanRate);
 
-    let interestRate = document.getElementById("rate").value;
+    //Calculate a payment
 
-    let calculatedRate = calcRate(interestRate);
+    let payment = calcPayment(loanAmount, loanRate, loanTerm);
 
-    let payment = calcPayment(loanAmount, calculatedRate, term,);
+    //return a list of payment objects
+    let payments = getPayments(loanAmount, loanRate, loanTerm, payment)
 
-    let totalPayments = calcPaymentSchedule(loanAmount, calculatedRate, term, payment);
 
-    displayData(totalPayments);
+    displayData(payments, loanAmount, payment);
+
+
 }
 
-//calculate the interest rate
-function calcRate(interestRate) {
-    return (loanAmount * rate) / (1 - Math.pow(1 + rate, -term));
-}
+//build amoritization schedule
+function getPayments(amount, rate, term, payment) {
 
-//calculate the monthly payment
-function calcPayment() {
-    return (balance * rate);
-}
-
-//calculate payment schedule
-function calcPaymentSchedule() {
     let payments = [];
-
-    //variables for the schedule
     let balance = amount;
     let totalInterest = 0;
     let monthlyPrincipal = 0;
     let monthlyInterest = 0;
     let monthlyTotalInterest = 0;
 
-    //loop for each month of the loan term
-    for (month = 1; month <= term; month++) {
-        monthlyInterest = calcRate;
+    for (let month = 1; month < term; month++) {
+
+        monthlyInterest = calcInterest(balance, rate);
         totalInterest += monthlyInterest;
         monthlyPrincipal = payment - monthlyInterest;
-        balance = balance - monthlyPrincipal
+        balance = Math.abs(balance - monthlyPrincipal);
 
-        //information contained in the object
-        let loanPayment = {
+        //add the details to an object
+        let curPayment = {
             month: month,
-            payments: payments,
+            payment: payment,
             principal: monthlyPrincipal,
+            interest: monthlyInterest,
             totalInterest: totalInterest,
             balance: balance
-        }
-        payments.push(loanPayment);
+        };
+
+        payments.push(curPayment);
     }
+
     return payments;
+
 }
 
-
-//display data in the table
+//display data to the user
 function displayData(payments, loanAmount, payment) {
-    let tableBody = document.getElementById("paymentBody");
-    let template = document.getElementById("paymentSchedule");
+    let tableBody = document.getElementById("scheduleBody");
 
-    //clear the table for more calculations
-    tableBody.innerHTML = "";
+    let template = document.getElementById("schedule-Template");
+
+    //clears the table of previous data
+    tableBody.innerHTML = ""
+
+    //configure currency formatter
+    let currencyFormatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+    });
 
     for (let index = 0; index < payments.length; index++) {
 
-        payRow = template.contentEditable.cloneNode(true);
-        payCols = payRow.querySelectorAll("td");
+        //<tr>.....</tr>
+        let payRow = template.content.cloneNode(true);
 
-        //build the row
-       
-        paycols[0].textContent = payments[i].month;
-        paycols[1].textContent = payments[i].payment.toFixed(2);
-        paycols[2].textContent = payments[i].principal.toFixed(2);
-        paycols[3].textContent = payments[i].interest.toFixed(2);
-        paycols[4].textContent = payments[i].totalInterest.toFixed(2);
-        paycols[5].textContent = payments[i].balance.toFixed(2);
+        let payCols = payRow.querySelectorAll("td");
 
-        //append to the table
+        payCols[0].textContent = payments[index].month;
+        payCols[1].textContent = currencyFormatter.format(payments[index].payment.tofixed(2));
+        payCols[2].textContent = currencyFormatter.format(payments[index].principal.tofixed(2));
+        payCols[3].textContent = currencyFormatter.format(payments[index].interest.tofixed(2));
+        payCols[4].textContent = currencyFormatter.format(payments[index].totalInterest.tofixed(2));
+        payCols[5].textContent = currencyFormatter.format(payments[index].balance.tofixed(2));
+
         tableBody.appendChild(payRow);
     }
+    //total interest is in the last row of the payment
+    let totalInterest = payments[payments.length - 1].totalInterest
 
-    //total interest is in the last row of the payments array.
-    let totalInterest = payments[payments.length - 1].totalInterest;
-    //calculate total cost
+    //calculate the total cost
     let totalCost = Number(loanAmount) + totalInterest;
 
-    //Build out the summary area
+    let totalPrincipal = Number(loanAmount);
+
     let labelPrincipal = document.getElementById("totalPrincipal");
-    labelPrincipal.innerHTML = Number(loanAmount).toLocaleString("en-US", {
+
+    labelPrincipal.innerHTML = totalPrincipal.toLocaleString("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "USD"
     });
 
     let labelInterest = document.getElementById("totalInterest");
     labelInterest.innerHTML = Number(totalInterest).toLocaleString("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "USD"
+
     });
 
-    let paymentdiv = document.getElementById("payment");
-    paymentdiv.innerHTML = Number(payment).toLocaleString("en-US", {
+    let labelPayment = document.getElementById("payment");
+    labelPayment.innerHTML = Number(payment).toLocaleString("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "USD"
     });
 
-    let totalCostDiv = document.getElementById("totalCost");
-
-    totalCostDiv.innerHTML = Number(totalCost).toLocaleString("en-US", {
+    let labelTotalCost = document.getElementById("totalCost");
+    labelTotalCost.innerHTML = Number(totalCost).toLocaleString("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "USD"
     });
 
 }
