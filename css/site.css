@@ -14,59 +14,67 @@ main>.container {
 
 /*-----NAVBAR STYLES---*/
 .navbarBG {
-    background-color: purple
+background: #FEAC5E;
+/* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
+/* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
 }
 
 
 /*----CHECKBOX COLORS----*/
 
-.checklisticon{
-    color:var(--bm-secondary-color);
+.checklisticon {
+    color: purple;
 }
 
 /*----ICON COLORS----*/
 
-.jsicon{
+.jsicon {
     color: #e2d304;
 }
 
-.bsicon{
+.bsicon {
     color: #800080;
 }
 
-.htmlicon{
+.htmlicon {
     color: #ff4500;
 }
 
-.cssicon{
+.cssicon {
     color: #0b52d6
 }
 
 /*----Button Styles override Bootstrap Styles----*/
-.btn-outline-primary{
+.btn-outline-primary {
     color: var(--bm-dark-color);
     border-color: var(--bm-secondary-color) !important;
 }
 
 .btn-outline-primary:hover,
 .btn-outline-primary:active,
-.btn-outline-primary:focus{
+.btn-outline-primary:focus {
     border-color: var(--bm-primary-color) !important;
     background-color: var(--bm-secondary-color);
- }
+}
 
 
-.btn-primary{
+.btn-primary {
     color: black !important;
-    background-color: blueviolet !important;
-    border-color: var(--bm-secondary-color);
+    background-color: rgb(141, 233, 213) !important;
+    border-color: var(--bm-dark-color);
     font-weight: bold;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:visited,
-.btn-primary:focus{
+.btn-primary:focus {
     filter: brightness(1.1) !important;
     border-color: purple;
 }
@@ -74,12 +82,19 @@ main>.container {
 
 
 /*----FOOTER STYLES----*/
-.footer{
-    background-color:purple;
+.footer {
+background: #FEAC5E;
+/* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
+/* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     padding-right: 1rem;
     color: var(--bm-light-color);
 
 }
+
 .sticky-footer {
     position: sticky;
     left: 0;
@@ -87,13 +102,13 @@ main>.container {
     width: 100%;
 }
 
-footer .social>a{
+footer .social>a {
     color: var(--bm-light-color);
     opacity: .75;
 
 }
 
-footer .social>a:hover{
+footer .social>a:hover {
     color: black;
     opacity: .90;
 }

@@ -10,7 +10,7 @@ function calcInterest(balance, rate) {
 //convert rate to a monthly interest rate
 function calcRate(rate) {
 
-    return rate - rate / 1200
+    return rate / 1200
 }
 
 
@@ -48,7 +48,7 @@ function getPayments(amount, rate, term, payment) {
     let monthlyInterest = 0;
     let monthlyTotalInterest = 0;
 
-    for (let month = 1; month < term; month++) {
+    for (let month = 1; month <= term; month++) {
 
         monthlyInterest = calcInterest(balance, rate);
         totalInterest += monthlyInterest;
@@ -95,11 +95,11 @@ function displayData(payments, loanAmount, payment) {
         let payCols = payRow.querySelectorAll("td");
 
         payCols[0].textContent = payments[index].month;
-        payCols[1].textContent = currencyFormatter.format(payments[index].payment.tofixed(2));
-        payCols[2].textContent = currencyFormatter.format(payments[index].principal.tofixed(2));
-        payCols[3].textContent = currencyFormatter.format(payments[index].interest.tofixed(2));
-        payCols[4].textContent = currencyFormatter.format(payments[index].totalInterest.tofixed(2));
-        payCols[5].textContent = currencyFormatter.format(payments[index].balance.tofixed(2));
+        payCols[1].textContent = currencyFormatter.format(payments[index].payment.toFixed(2));
+        payCols[2].textContent = currencyFormatter.format(payments[index].principal.toFixed(2));
+        payCols[3].textContent = currencyFormatter.format(payments[index].interest.toFixed(2));
+        payCols[4].textContent = currencyFormatter.format(payments[index].totalInterest.toFixed(2));
+        payCols[5].textContent = currencyFormatter.format(payments[index].balance.toFixed(2));
 
         tableBody.appendChild(payRow);
     }

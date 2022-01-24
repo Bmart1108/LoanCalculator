@@ -21,6 +21,8 @@
     <link href="css/site.css" rel="stylesheet">
 
 
+
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -60,15 +62,15 @@
             <div class="row">
                 <div class="col">
                     <form>
-                        <div class="mb-1">
+                        <div class="mb-1 fw-bold">
                             <label for="loanAmount" class="form-label">Loan Amount:</label>
                             <input type="number" class="form-control" id="lamount" value="15000">
                         </div>
-                        <div class="mb-1">
+                        <div class="mb-1 fw-bold">
                             <label for="term" class="form-label">Payments:</label>
                             <input type="number" class="form-control" id="lterm" value="60">
                         </div>
-                        <div class="mb-1">
+                        <div class="mb-1 fw-bold">
                             <label for="interestRate" class="form-label">Rate:</label>
                             <input type="number" class="form-control" id="lrate" value="3">
                         </div>
@@ -79,26 +81,26 @@
                 </div>
                 <div class="col">
                     <div id="paymentTitle">
-                        <p>Your Monthly Payments</p>
+                        <p class="fw-bolder">Your Monthly Payments:</p>
                     </div>
                     <p id="payment">
 
                     </p>
                     <div class="row row-cols-2">
                         <div class="col">
-                            <label class="text-left">Total Principcal</label>
+                            <label class="text-left fw-bolder">Total Principcal:</label>
                         </div>
                         <div class="col text-right" id="totalPrincipal">
 
                         </div>
                         <div class="col text-left">
-                            <label>Total Interest</label><br>
+                            <label class="fw-bolder">Total Interest:</label><br>
                         </div>
                         <div class="col text-right" id="totalInterest">
 
                         </div>
                         <div class="col text-left">
-                            <label>Total Cost</label>
+                            <label class="fw-bolder">Total Cost:</label>
                         </div>
                         <div class="col text-right" id="totalCost">
 
@@ -110,7 +112,7 @@
             <div class="row">
                 <div class="col">
                     <table class="table table-hover table-striped">
-                        <thead id="tableheader" class="text-white">
+                        <thead id="tableheader" class="text-dark">
                             <tr>
                                 <th>Month</th>
                                 <th>Payment</th>
@@ -120,9 +122,9 @@
                                 <th>Balance</th>
                             </tr>
                         </thead>
-                        <tBody id="scheduleBody">
+                        <tbody id="scheduleBody">
                             <!----MONTHLY PAYMENT DATA GOES HERE-->
-                        </tBody>
+                        </tbody>
                     </table>
                 </div>
             </div>
